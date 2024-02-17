@@ -88,7 +88,7 @@
 
             if($resultado){
                 // Redirecciona al usuario
-                header('Location: /admin/galeria.php?mensaje=2');
+                header('Location: /admin/comidas-restaurante.php?mensaje=2');
             }
         }
     }   

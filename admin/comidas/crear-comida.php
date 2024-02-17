@@ -66,7 +66,7 @@
 
             if($resultado){
                 // Redirecciona al usuario
-                header('Location: /admin/galeria.php?mensaje=1');
+                header('Location: /admin/comidas-restaurante.php?mensaje=1');
             }
         }
   }
@@ -83,7 +83,7 @@
             </div>
         <?php endforeach; ?>
 
-        <form class="formulario" method="POST" action="/admin/comidas/crear.php" enctype="multipart/form-data">
+        <form class="formulario" method="POST" action="/admin/comidas/crear-comida.php" enctype="multipart/form-data">
             <fieldset>
                 <legend>Informacion general</legend>
 

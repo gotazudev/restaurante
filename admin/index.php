@@ -17,9 +17,6 @@
                             <div class="row">
                                 <a href="galeria-restaurante.php" class="btn btn-lg btn-primary my-2">Editar Galeria</a href="galeria.php">
                             </div>
-                            <div class="row">
-                                <a href="galeria.php" class="btn btn-lg btn-primary my-2">Editar Galeria</a href="galeria.php">
-                            </div>
                         </div>
                     </div>
                 </div>

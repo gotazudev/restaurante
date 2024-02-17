@@ -36,7 +36,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
         $resultadoDelete = mysqli_query($db, $query);
  
         if($resultadoDelete){
-            header('Location: /admin/galeria.php?mensaje=3'); 
+            header('Location: /admin/comidas-restaurante.php?mensaje=3'); 
         }
     }
     
@@ -54,7 +54,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
         <p class="alerta error">¡Anuncio Eliminado Correctamente!</p>
     <?php endif; ?>
 
-    <a href="/admin/comidas/crear-comida.php" class="boton boton-verde">Nueva propiedad</a>
+    <a href="/admin/comidas/crear-comida.php" class="boton boton-verde">Nueva comida</a>
 
 
 <table class="comidas">

@@ -8,10 +8,10 @@
     <title>FoodHut | Free Bootstrap 4.3.x template</title>
    
     <!-- font icons -->
-    <link rel="stylesheet" href="/assets/vendors/themify-icons/css/themify-icons.css">
+    <link rel="stylesheet" href="assets/vendors/themify-icons/css/themify-icons.css">
 
-    <link rel="stylesheet" href="/assets/vendors/animate/animate.css">
+    <link rel="stylesheet" href="assets/vendors/animate/animate.css">
 
     <!-- Bootstrap + FoodHut main styles -->
-	<link rel="stylesheet" href="/assets/css/foodhut.css">
+	<link rel="stylesheet" href="assets/css/foodhut.css">
 </head>
