@@ -12,10 +12,13 @@
                         <h2 class="mb-4">Vista admin</h2>
                         <div class="row">
                             <div class="row">
-                                <a href="galeria.php" class="btn btn-lg btn-primary my-2">Editar Galeria</a href="galeria.php">
+                                <a href="comidas-restaurante.php" class="btn btn-lg btn-primary my-2">Editar Comidas</a href="comidas-restaurante.php">
                             </div>
                             <div class="row">
-                                <a href="precios.php" class="btn btn-lg btn-primary my-2">Editar Precios</a href="galeria.php">
+                                <a href="galeria-restaurante.php" class="btn btn-lg btn-primary my-2">Editar Galeria</a href="galeria.php">
+                            </div>
+                            <div class="row">
+                                <a href="galeria.php" class="btn btn-lg btn-primary my-2">Editar Galeria</a href="galeria.php">
                             </div>
                         </div>
                     </div>
