@@ -52,7 +52,8 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
         <p class="alerta exito">¡Anuncio Actualizado Correctamente!</p>
     <?php elseif( intval($mensaje) === 3) :?>  
         <p class="alerta error">¡Anuncio Eliminado Correctamente!</p>
-    <?php endif; ?>
+    <?php endif; 
+    ?>
 
     <a href="/admin/galeria/crear-galeria.php" class="boton boton-verde">Subir nueva imagen</a>
 
