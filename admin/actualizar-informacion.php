@@ -17,7 +17,6 @@
     
     //Arreglo con mensajes de errores
     $errores=[];
-
     $nombreEmpresa = $info['nombreEmpresa'];
     $menuTexto1 = $info['menuTexto1'];
     $menuTexto2 = $info['menuTexto2'];
@@ -31,8 +30,7 @@
     $direccionContacto = $info['direccionContacto'];
     $telefonoContacto = $info['telefonoContacto'];
     $correoContacto = $info['correoContacto'];
-
-    // $imagenLogoRestaurante = $info['imagenLogo'];
+    $imagenLogoRestaurante = $info['imagenLogo'];
     // $imagenMenu2Restaurante = $info['imagenMenu2'];
 
     // $creado = date('Y/m/d');   
@@ -55,6 +53,10 @@
     $direccionContacto = mysqli_real_escape_string($db, $_POST['direccionContacto']);
     $telefonoContacto = mysqli_real_escape_string($db, $_POST['telefonoContacto']);
     $correoContacto = mysqli_real_escape_string($db, $_POST['correoContacto']);
+
+    $imagen1 = $_FILES['imagenLogo'];
+    
+
 
      //Asignar files hacia la variable
     //  $imagenLogo = $_FILES['imagenLogo'];
@@ -104,32 +106,36 @@
             $errores[] = "Debes añadir un correo";
         }
        
+
+        // $imagenLogoRestaurante = $info['imagenLogo'];
+        // $imagen1 = $_FILES['imagenLogo'];
+        
         // Revisar que el arreglo de errores este vacío
         if( empty($errores) ) {
-           
-        //Insertar en BD
-        
-        $query = "UPDATE informacion SET 
-        nombreEmpresa = '{$nombreEmpresa}',
-        -- imagenLogo = '{$imagenLogo}',
-        menuTexto1 = '{$menuTexto1}',
-        menuTexto2 = '{$menuTexto2}',
-        menuTexto3 = '{$menuTexto3}',
-        menuTexto4 = '{$menuTexto4}',
-        menuTexto5 = '{$menuTexto5}' ,
-        tituloPrincipal1 = '{$tituloPrincipal1}',
-        tituloPrincipal2 = '{$tituloPrincipal2}',
-        descripcionMenu2 = '{$descripcionMenu2}',
-        mapaURL = '{$mapaURL}',
-        direccionContacto = '{$direccionContacto}',
-        telefonoContacto = '{$telefonoContacto}',
-        correoContacto = '{$correoContacto}'
-        WHERE id = {$id} ";      
 
-        
-        // echo $query;
+                $carpetaImagenes1 = '../img-logo/';
+                $nombreImagen1 = '';
+    
+    
+                // /* SUBIDA DE ARCHIVOS */
+                if($imagen1['name']){
+                    // Eliminar la imagen previa
+                    unlink($carpetaImagenes1 . $info['imagenLogo']);
+                     // Generar imagen nombre unico
+                    $nombreImagen1 = md5(uniqid(rand(),true)).".jpg";
+    
+                    // Subir la imagen
+                    move_uploaded_file($imagen1['tmp_name'], $carpetaImagenes1.$nombreImagen1);
+                } else{
+                    $nombreImagen1 = $info['imagenLogo'];
+                }           
+    
 
-     
+
+                
+        //Actualizar en BD
+        $query = "UPDATE informacion SET imagenLogo = '{$nombreImagen1}' WHERE id = {$id} ";
+
 
         $resultado = mysqli_query($db,$query);
 
