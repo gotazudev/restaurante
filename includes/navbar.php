@@ -1,4 +1,19 @@
-<?php include "cabecera.php"; ?>
+<?php
+
+include "cabecera.php";
+
+// Importar la BD
+require 'config/database.php';
+$db = conectarDB();
+
+// Consultar
+$queryInformacion = "SELECT * FROM informacion";
+// Obtener resultados
+$informacionResultado = mysqli_query($db,$queryInformacion);
+$info = mysqli_fetch_assoc($informacionResultado);
+
+
+?>
 
 <body data-spy="scroll" data-target=".navbar" data-offset="40" id="home">
     
@@ -10,29 +25,29 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="/#home">Home</a>
+                    <a class="nav-link" href="/#home"><?php echo $info['menuTexto1']; ?></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/#about">Nosotros</a>
+                    <a class="nav-link" href="/#about"><?php echo $info['menuTexto2']; ?></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/#gallary">Galeria</a>
+                    <a class="nav-link" href="/#gallary"><?php echo $info['menuTexto3']; ?></a>
                 </li>
             </ul>
             <a class="navbar-brand m-auto" href="#">
-                <img src="assets/imgs/logo.svg" class="brand-img" alt="">
-                <span class="brand-txt">Food Hut</span>
+                <img src="img-logo/<?php echo $info['imagenLogo']; ?>" class="brand-img" alt="">
+                <span class="brand-txt"><?php echo $info['nombreEmpresa']; ?></span>
             </a>
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="#blog">Piqueos<span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="#blog"><?php echo $info['menuTexto4']; ?><span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#contact">Contacto</a>
+                    <a class="nav-link" href="#contact"><?php echo $info['menuTexto5']; ?></a>
                 </li>
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a href="components.html" class="btn btn-primary ml-xl-4">Components</a>
-                </li>
+                </li> -->
             </ul>
         </div>
     </nav>

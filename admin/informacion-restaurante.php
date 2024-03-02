@@ -40,10 +40,10 @@ $mensaje = $_GET['mensaje'] ?? null; //* Con esta variable global podemos enviar
             <th>Imagen Menu 2</th>
             <th>Descripcion Menu 2</th>
             <th>Contacto URL Mapa</th>
-            <th>Contacto descripcion</th>
             <th>Correo</th>
             <th>Direccion</th>
             <th>Telefono</th>
+            <th>Banner</th>
         </tr>
     </thead>
  
@@ -65,9 +65,10 @@ $mensaje = $_GET['mensaje'] ?? null; //* Con esta variable global podemos enviar
             
             <td> <?php echo $info['descripcionMenu2']; ?> </td>
             <td> <?php echo $info['mapaURL']; ?> </td>
+            <td> <?php echo $info['correoContacto']; ?> </td>
             <td> <?php echo $info['direccionContacto']; ?> </td>
             <td> <?php echo $info['telefonoContacto']; ?> </td>
-            <td> <?php echo $info['correoContacto']; ?> </td>
+            <td> <img width="80px" src="/img-banner/<?php echo $info['imagenBanner']; ?>" alt=""> </td>
 
             <td> 
                 <form method="POST" class="w-100">

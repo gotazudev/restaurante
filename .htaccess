@@ -1,0 +1,8 @@
+Options +FollowSymLinks
+RewriteEngine on
+
+RewriteRule ^comidasPeruanas admin/comidas-restaurante.php
+RewriteRule ^galeriaPeruana admin/galeria-restaurante.php
+RewriteRule ^actualizarComida admin/comidas/actualizar-comida.php
+
+# http://restaurante.test/admin/comidas/actualizar-comida.php?id=10

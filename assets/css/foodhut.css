@@ -11264,10 +11264,10 @@ pre {
   max-width: 1440px;
 }
 
-.has-img-bg {
+/* .has-img-bg {
   background: url(../imgs/about-section.jpg) no-repeat center center;
   background-size: cover;
-}
+} */
 
 .has-bg-overlay {
   position: relative;

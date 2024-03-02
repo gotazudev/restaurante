@@ -31,7 +31,8 @@
     $telefonoContacto = $info['telefonoContacto'];
     $correoContacto = $info['correoContacto'];
     $imagenLogoRestaurante = $info['imagenLogo'];
-    // $imagenMenu2Restaurante = $info['imagenMenu2'];
+    $imagenMenu2Restaurante = $info['imagenMenu2'];
+    $imagenBannerRestaurante = $info['imagenBanner'];
 
     // $creado = date('Y/m/d');   
 
@@ -55,6 +56,8 @@
     $correoContacto = mysqli_real_escape_string($db, $_POST['correoContacto']);
 
     $imagen1 = $_FILES['imagenLogo'];
+    $imagen2 = $_FILES['imagenMenu2'];
+    $imagen3 = $_FILES['imagenBanner'];
     
 
 
@@ -122,19 +125,71 @@
                     // Eliminar la imagen previa
                     unlink($carpetaImagenes1 . $info['imagenLogo']);
                      // Generar imagen nombre unico
-                    $nombreImagen1 = md5(uniqid(rand(),true)).".jpg";
+                    $nombreImagen1 = md5(uniqid(rand(),true)).".png";
     
                     // Subir la imagen
                     move_uploaded_file($imagen1['tmp_name'], $carpetaImagenes1.$nombreImagen1);
                 } else{
                     $nombreImagen1 = $info['imagenLogo'];
-                }           
+                }         
+                
+                $carpetaImagenes2 = '../img-menu2/';
+                $nombreImagen2 = '';
+    
+    
+                // /* SUBIDA DE ARCHIVOS */
+                if($imagen2['name']){
+                    // Eliminar la imagen previa
+                    unlink($carpetaImagenes2 . $info['imagenMenu2']);
+                     // Generar imagen nombre unico
+                    $nombreImagen2 = md5(uniqid(rand(),true)).".jpg";
+    
+                    // Subir la imagen
+                    move_uploaded_file($imagen2['tmp_name'], $carpetaImagenes2.$nombreImagen2);
+                } else{
+                    $nombreImagen2 = $info['imagenMenu2'];
+                }     
+                
+                
+                $carpetaImagenes3 = '../img-banner/';
+                $nombreImagen3 = '';
+    
+    
+                // /* SUBIDA DE ARCHIVOS */
+                if($imagen3['name']){
+                    // Eliminar la imagen previa
+                    unlink($carpetaImagenes3 . $info['imagenBanner']);
+                     // Generar imagen nombre unico
+                    $nombreImagen3 = md5(uniqid(rand(),true)).".jpg";
+    
+                    // Subir la imagen
+                    move_uploaded_file($imagen3['tmp_name'], $carpetaImagenes3.$nombreImagen3);
+                } else{
+                    $nombreImagen3 = $info['imagenBanner'];
+                }         
     
 
 
                 
         //Actualizar en BD
-        $query = "UPDATE informacion SET imagenLogo = '{$nombreImagen1}' WHERE id = {$id} ";
+        $query = "UPDATE informacion SET 
+        imagenLogo = '{$nombreImagen1}', 
+        imagenMenu2 = '{$nombreImagen2}',
+        nombreEmpresa = '{$nombreEmpresa}',
+        menuTexto1 = '{$menuTexto1}',
+        menuTexto2 = '{$menuTexto2}',
+        menuTexto3 = '{$menuTexto3}',
+        menuTexto4 = '{$menuTexto4}',
+        menuTexto5 = '{$menuTexto5}',
+        tituloPrincipal1 = '{$tituloPrincipal1}',
+        tituloPrincipal2 = '{$tituloPrincipal2}',
+        descripcionMenu2 = '{$descripcionMenu2}',
+        mapaURL = '{$mapaURL}',
+        direccionContacto = '{$direccionContacto}',
+        telefonoContacto = '{$telefonoContacto}',
+        correoContacto = '{$correoContacto}',
+        imagenBanner = '{$nombreImagen3}'
+        WHERE id = {$id} ";
 
 
         $resultado = mysqli_query($db,$query);
@@ -171,7 +226,7 @@
                 
                 <label for="">Imagen Logo:</label>  
                 <img width="80px" src="/img-logo/<?php echo $imagenLogoRestaurante; ?>" class="imagen-small" alt="">
-                <input type="file" id="imagenLogo" name="imagenLogo" accept="image/jpeg, image/png">
+                <input type="file" id="imagenLogo" name="imagenLogo" accept="image/png">
 
                 <label for="">Menu Texto 1:</label>
                 <input type="text" id="menuTexto1" name="menuTexto1" placeholder="Menu Texto 1" value="<?php echo $menuTexto1; ?>">
@@ -203,17 +258,20 @@
                 <label for="">mapaURL:</label>
                 <input type="text" id="mapaURL" name="mapaURL" placeholder="mapaURL " value="<?php echo $mapaURL; ?>">
                 
-                <label for="">direccionContacto:</label>
+                <label for="">Direccion :</label>
                 <input type="text" id="direccionContacto" name="direccionContacto" placeholder="direccionContacto propiedad" value="<?php echo $direccionContacto; ?>">
                
-                <label for="">telefonoContacto:</label>
+                <label for="">Telefono :</label>
                 <input type="text" id="telefonoContacto" name="telefonoContacto" placeholder="telefonoContacto propiedad" value="<?php echo $telefonoContacto; ?>">
                 
-                <label for="">correoContacto:</label>
+                <label for="">Correo :</label>
                 <input type="text" id="correoContacto" name="correoContacto" placeholder="correoContacto propiedad" value="<?php echo $correoContacto; ?>">
                
-                <img width="80px" src="/img-menu2/<?php echo $imagenMenu2; ?>" class="imagen-small" alt="">
+                <img width="80px" src="/img-menu2/<?php echo $imagenMenu2Restaurante; ?>" class="imagen-small" alt="">
                 <input type="file" id="imagenMenu2" name="imagenMenu2" accept="image/jpeg, image/png">
+
+                <img width="80px" src="/img-banner/<?php echo $imagenBannerRestaurante; ?>" class="imagen-small" alt="">
+                <input type="file" id="imagenBanner" name="imagenBanner" accept="image/jpeg, image/png">
 
             </fieldset>
            

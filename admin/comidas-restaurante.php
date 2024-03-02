@@ -82,7 +82,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
                     <input type="hidden" name="id" value="<?php echo $comida['id']; ?>"> <!-- Estos input tipo hidden no se pueden ver, pero si inspeccionamos el código só los podemos ver. No usamos tipo TEXT porque los usarios pueden modificarlo. -->
                     <input type="submit" class="boton-rojo-block" value="Eliminar">
                 </form>
-                    <a href="/admin/comidas/actualizar-comida.php?id=<?php echo $comida['id']; ?>" class="boton-amarillo-block">Actualizar</a> <!-- Con este QueryString podremos mostrar por url el id de la propiedad a actualizar y esto nos ayudará a traernos la info de cada propiedad. -->
+                    <a href="/actualizarComida?id=<?php echo $comida['id']; ?>" class="boton-amarillo-block">Actualizar</a> <!-- Con este QueryString podremos mostrar por url el id de la propiedad a actualizar y esto nos ayudará a traernos la info de cada propiedad. -->
             </td>
         </tr>
     <?php endwhile; ?>

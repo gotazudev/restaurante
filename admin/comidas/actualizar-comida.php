@@ -1,18 +1,40 @@
 <?php 
     
+    include '../../includes/funciones.php'; 
+
+    $auth = estaAutenticado();
+
+    if(!$auth){
+        header('Location: /');
+    }
     // Validar la URL por ID valido
     $id = $_GET['id'];
     $id = filter_var($id, FILTER_VALIDATE_INT);
+
+    if(!$id){
+        header('Location: /');
+    }
 
 
     //Base de datos
     include '../../includes/config/database.php'; 
     $db = conectarDB();
-
+    
+    
     // Obtener los datos de la propiedad
     $consulta = "SELECT * FROM comidas WHERE id = ".$id;
     $resultado = mysqli_query($db,$consulta);
     $comida = mysqli_fetch_assoc($resultado);
+    
+    
+    echo $_GET['id'];
+    echo '<br>';
+
+    // Verifica si el id ingresado manualmente en la url existe en la bd, si no existe entonces redirige a cierto link
+    // Ejemplo : se ingresa el id : 38055, como no existe en la bd entonces redirige a la url
+    if(!isset($comida['id'])){
+        header('Location: /admin');
+    }
 
     //Arreglo con mensajes de errores
     $errores=[];
